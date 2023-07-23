@@ -2,6 +2,21 @@
 
 atmaCup[「#15 アニメ作品のユーザー評価を予測せよ！」](https://www.guruguru.science/competitions/21/)の 3rd place solution です。
 
+## コード
+
+以下のコードをベースに、条件を変えて予測結果を数パターン作り平均したものを最終提出物としました。  
+条件の詳細は[アンサンブル](#アンサンブル)をご覧ください。
+
+- [atmacup_15_marupuro.ipynb](./atmacup_15_marupuro.ipynb)
+
+このコードの予測精度は以下の通りです。
+
+- CV: 1.1649 ± 0.0193
+- Public LB: 1.1719
+- Private LB: 1.1474
+
+---
+
 以下、[ディスカッション](https://www.guruguru.science/competitions/21/discussions/6c9d59b3-8362-43f8-a7db-f263e70bc58e/)へ投稿した内容を転載します。
 
 ## 主なアイデア
@@ -33,8 +48,8 @@ atmaCup[「#15 アニメ作品のユーザー評価を予測せよ！」](https:
 
 ## モデル
 
-LightGBMを使いました。
-`feature_fraction` を小さめに設定しつつ、ゆっくり学習させると精度が上がりました。
+LightGBMを使いました。  
+`feature_fraction` を小さめに設定しつつ、ゆっくり学習させると精度が上がりました。  
 おそらく特徴量の数が多かったからだと思います。
 
 - `'objective': 'regression'`
@@ -43,7 +58,7 @@ LightGBMを使いました。
 
 ## アンサンブル
 
-以下のモデルの予測結果を平均しました。
+以下のモデルの予測結果を平均しました。  
 学習データ全件で学習させたモデルを加えるとPublic LBが上がりました。
 
 - NMFの次元数を変えたモデル
